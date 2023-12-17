@@ -11,7 +11,7 @@ import lombok.extern.log4j.Log4j;
 
 @Log4j
 public class JDBCTests {
-
+	
 	static {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -23,15 +23,16 @@ public class JDBCTests {
 	@Test
 	public void testConnection() {
 		
-		try(Connection con =
+		try(Connection con = 
 			DriverManager.getConnection(
-				 "jdbc:oracle:thin:@localhost:1521:XE",
-				 "book_ex",
-				 "1234")){
+				  "jdbc:oracle:thin:@localhost:1521:XE",
+				  "book_ex",
+				  "1234")){
 			
 			log.info(con);
-		}   catch (Exception e) {
+		  } catch (Exception e) {
 			fail(e.getMessage());
-		}
+				  }
+			
 	}
 }
