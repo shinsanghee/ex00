@@ -13,19 +13,21 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
-@ComponentScan(basePackages = { "org.zerock.sample" })
-@MapperScan(basePackages= {"org.zerock.mapper"} )
+//@ComponentScan(basePackages = { "org.zerock.sample" })
+@MapperScan(basePackages= {"org.zerock.mapper"})
 public class RootConfig {
 
 	@Bean 
 	public DataSource dataSource() {   
 		HikariConfig hikariConfig = new HikariConfig();    
-		//hikariConfig.setDriverClassName("oracle.jdbc.driver.OracleDriver");    
-		// hikariConfig.setJdbcUrl("jdbc:oracle:thin:@localhost:1521:XE");  
+		hikariConfig.setDriverClassName("oracle.jdbc.driver.OracleDriver");    
+		hikariConfig.setJdbcUrl("jdbc:oracle:thin:@localhost:1521:XE");  
 		hikariConfig.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
 		hikariConfig.setJdbcUrl("jdbc:log4jdbc:oracle:thin:@localhost:1521.XE");
-		hikariConfig.setUsername("BOOK_EX");    
-		hikariConfig.setPassword("book_ex");    
+		
+		hikariConfig.setUsername("SSH");    
+		hikariConfig.setPassword("1234");  
+		
 		//hikariConfig.setMaximumPoolSize(5);    
 		//hikariConfig.setConnectionTestQuery("SELECT 1");    
 		//hikariConfig.setPoolName("springHikariCP");     

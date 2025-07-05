@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.zerock.domain.SampleDTOList;
@@ -48,7 +49,7 @@ public class SampleController {
 
 		return "ex02";
 	}
-
+	
 	@GetMapping("/ex02List")
 	public String ex02List(@RequestParam("ids") ArrayList<String> ids) {
 
@@ -56,7 +57,8 @@ public class SampleController {
 
 		return "ex02List";
 	}
-
+	
+		
 	@GetMapping("/ex02Array")
 	public String ex02Array(@RequestParam("ids") String[] ids) {
 
@@ -89,6 +91,7 @@ public class SampleController {
 		return "/sample/ex04";
 	}
 	
+	
 	@GetMapping("/ex05")
 	public void ex05() {
 		log.info("/ex05.............");
@@ -120,6 +123,16 @@ public class SampleController {
 	@RequestMapping("")
 	public void basic() {
 		log.info("basic.....................");
+	} 
+	
+	@RequestMapping(value = "/basic", method = {RequestMethod.GET, RequestMethod.POST})
+	public void basicGet() {
+		log.info("basic get................");
+	}
+	
+	@GetMapping("/basicOnlyGet")
+	public void basicGet2() {
+		log.info("basic get only get...............");
 	}
 	
 }

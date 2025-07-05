@@ -32,13 +32,21 @@ public class BoardSeviceTests {
 	@Test
 	public void testGetList() {
 		
-		service.getList().forEach(board -> log.info(board));
+		// service.getList().forEach(board -> log.info(board));
+		service.getList(new Crieria(2, 10).forEach(board -> log.info(board)));
 	}
 	
 	@Test
 	public void testGet() {
 		
 		log.info(service.get(1L));
+	}
+	
+	@Test
+	public void testDelete() {
+	
+	// 게시물 번호의 존재 여부를 확인하고 테스트할 것
+	log.info("REMOVE RESULT: " + service.remove(2));
 	}
 	
 	@Test
@@ -54,4 +62,18 @@ public class BoardSeviceTests {
 		log.info("MODIFY RESULT: " + service.modify(board));
 		
 	}
+	
+	@Test
+	public void testRegister() {
+		
+		BoardVO board = new BoardVO();
+		board.setTitle("새로 작성하는 글");
+		board.setContent("새로 작성하는 내용");
+		board.setWriter("newbie");
+		
+		service.register(board);
+		
+		log.info("새성된 게시물의 번호: " + board.getBno());
+	}
+	
 }
